@@ -28,7 +28,7 @@ public class ControllerRol {
     private RolServiceImp rolServiceImp;
 
 
-    @DeleteMapping
+    @DeleteMapping("{id}")
     public ResponseEntity<String> eliminarRol(@PathVariable Long id){
 
         rolServiceImp.eliminarRol(id);
@@ -37,7 +37,7 @@ public class ControllerRol {
     }
 
 
-    @PostMapping 
+    @PostMapping
     public Rol crearRol(@RequestBody Rol rol){
 
         return rolServiceImp.crearRol(rol);
@@ -51,7 +51,7 @@ public class ControllerRol {
     }
 
 
-    @PutMapping 
+    @PutMapping("{id}") 
     public Rol editarRol(@PathVariable Long id, @RequestBody Rol rol){
 
         return rolServiceImp.editarRol(id, rol);
@@ -59,7 +59,7 @@ public class ControllerRol {
 
 
 
-    @GetMapping 
+    @GetMapping("{id}") 
     public Rol mostrarRol(@PathVariable Long id){
 
         return rolServiceImp.obtenerRol(id);
