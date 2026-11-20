@@ -33,7 +33,7 @@ public class Usuario{
     private String usuario;
 
     @Column (name="clave")
-    @NotBlank(message = "El campo clave no puede estar vacio en medico")
+    @NotBlank(message = "El campo clave no puede estar vacio")
     private String clave;
 
     @Column (name="intento")
