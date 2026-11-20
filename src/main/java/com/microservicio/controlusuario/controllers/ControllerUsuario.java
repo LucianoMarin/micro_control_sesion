@@ -76,7 +76,7 @@ public class ControllerUsuario {
     }
 
 
-    @GetMapping ("/login")
+    @PostMapping ("/login")
 
     public String iniciarSesion(@RequestBody Usuario usuario){
 

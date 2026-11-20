@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -37,15 +39,16 @@ public class Usuario{
     @Column (name="intento")
     private Integer intento;
 
-    @Column (name="rol")
-    private Integer rol;
+    @ManyToOne 
+    @JoinColumn(name="rol_id")
+    private Rol rol;
 
     
 
     public Usuario(){}
 
     
-    public Usuario(String usuario,String clave, Integer intento, Integer rol){
+    public Usuario(String usuario,String clave, Integer intento, Rol rol){
 
         this.usuario=usuario;
         this.clave=clave;
@@ -56,15 +59,14 @@ public class Usuario{
     }
 
 
-    public Usuario(Long id,String usuario,String clave, Integer intento, Integer rol){
+    public Usuario(Long id,String usuario,String clave, Integer intento, Rol rol){
 
         this.id=id;
         this.usuario=usuario;
         this.clave=clave;
         this.intento=intento;
         this.rol=rol;
-
-
+        
     }
 
 
