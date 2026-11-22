@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController 
 @RequestMapping ("/usuarios")
-@CrossOrigin ("*")
 
 public class ControllerUsuario {
 

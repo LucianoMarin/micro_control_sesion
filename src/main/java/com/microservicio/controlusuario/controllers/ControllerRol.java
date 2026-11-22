@@ -20,7 +20,6 @@ import com.microservicio.controlusuario.services.RolServiceImp;
 
 @RestController
 @RequestMapping ("/rol")
-@CrossOrigin ("*") 
 public class ControllerRol {
     
 
