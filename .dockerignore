@@ -1,0 +1,10 @@
+.git
+.gitignore
+.vscode
+target
+Wallet_fullstackIII
+**/Wallet_fullstackIII
+*.jks
+*.p12
+*.pem
+*.sso
