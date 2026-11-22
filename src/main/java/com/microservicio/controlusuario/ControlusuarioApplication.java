@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.microservicio.controlusuario.models.Rol;
 import com.microservicio.controlusuario.models.Usuario;
@@ -19,8 +20,9 @@ public class ControlusuarioApplication {
         SpringApplication.run(ControlusuarioApplication.class, args);
     }
 
+    // 2. AGREGAMOS PasswordEncoder COMO PARÁMETRO
     @Bean
-    CommandLineRunner initData(UsuarioRepository repo, RolRepository repoRol) {
+    CommandLineRunner initData(UsuarioRepository repo, RolRepository repoRol, PasswordEncoder passwordEncoder) {
         return args -> {
             List<Rol> roles;
 
@@ -37,10 +39,13 @@ public class ControlusuarioApplication {
                 Rol rolNormal = roles.get(0);
                 Rol rolAdmin = roles.get(1);
 
+                // 3. ENCRIPTAMOS LA CLAVE ANTES DE GUARDARLA
+                String claveEncriptada = passwordEncoder.encode("1234");
+
                 List<Usuario> usuarios = List.of(
-                    new Usuario("lmarin", "1234", 0, rolAdmin),
-                    new Usuario("pgutierrez", "1234", 0, rolNormal),
-                    new Usuario("psoto", "1234", 0, rolNormal)
+                    new Usuario("lmarin", claveEncriptada, 0, rolAdmin),
+                    new Usuario("pgutierrez", claveEncriptada, 0, rolNormal),
+                    new Usuario("psoto", claveEncriptada, 0, rolNormal)
                 );
 
                 repo.saveAll(usuarios);
